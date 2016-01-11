@@ -15,7 +15,7 @@ $ sudo vi /etc/apache2/apache2.conf
 
 Alterar o trecho:
 ...
-<Directory /var/www/>
+Directory /var/www/>
 	Options Indexes FollowSymLinks
     AllowOverride None
     Require all granted
@@ -23,11 +23,10 @@ Alterar o trecho:
 
 para:
 ...
-<Directory .../seu-diretorio/qlf-frontend/>
+Directory .../seu-diretorio/qlf-frontend/>
 	Options Indexes FollowSymLinks
     AllowOverride None
     Require all granted
-
 ...
 
 Arquivo 2:
