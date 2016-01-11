@@ -4,7 +4,7 @@ Navegue pelo terminal até o diretorio que deseja usar para o projeto e execulte
 $ git clone https://github.com/linea-it/qlf-frontend
 
 nesse ponto você terá a seguinte estrutura
-...<seu-diretorio>/qlf-frontend/
+.../seu-diretorio/qlf-frontend/
 
 em seguida deve, com o apache já instalado, configurar para apontar para seu novo diretorio.
 É necessário alterar dois arquivos de configuração do apache:
@@ -19,16 +19,15 @@ Alterar o trecho:
 	Options Indexes FollowSymLinks
     AllowOverride None
     Require all granted
-</Directory>
 ...
 
 para:
 ...
-<Directory .../<seu-diretorio>/qlf-frontend/>
+<Directory .../seu-diretorio/qlf-frontend/>
 	Options Indexes FollowSymLinks
     AllowOverride None
     Require all granted
-</Directory>
+
 ...
 
 Arquivo 2:
@@ -44,7 +43,7 @@ Alterar a linha:
 
 para:
 
-    DocumentRoot .../<seu diretorio>/qlf-frontend/
+    DocumentRoot .../seu-diretorio/qlf-frontend/
 
 Após as alterações é necessario reiniciar o apache.
 com o comando a seguir:
