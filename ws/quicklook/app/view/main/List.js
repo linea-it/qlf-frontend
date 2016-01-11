@@ -79,55 +79,56 @@ Ext.define('QuickLook.view.main.List', {
                                             lista.push(
                                                 {
                                                     "title": obj[chave][info].name,
-                                                    items: [{
+                                                    items: [{                                                        
                                                         xtype: 'fieldcontainer',
                                                         // fieldLabel: 'Toppings',
-                                                        defaultType: 'checkboxfield',
-                                                        items: []
-                                                    }]
+                                                        // defaultType: 'checkboxfield',
+                                                        layout: 'hbox',
+                                                        items:[]
+                                                        }
+                                                    ]
                                                 }
                                             )
                                         }
                                         for (var step in obj[chave][info][result]){
-                                            for (var name in obj[chave][info][result][step]){                                                
-                                                    
+                                            for (var name in obj[chave][info][result][step]){
+                                                if (isInArray(obj[chave][info][result][step].name, listaAuxSteps) != true){
+                                                    listaAuxSteps.push(obj[chave][info][result][step].name)
+                                                    if (obj[chave][info][result][step].checked == 'True'){
+                                                        check = 'true'
 
-                                                    if (isInArray(obj[chave][info][result][step].name, listaAuxSteps) != true){
-                                                        listaAuxSteps.push(obj[chave][info][result][step].name)
-                                                        if (obj[chave][info][result][step].checked == 'True'){
-                                                            check = 'true'
-
-                                                        }else{
-                                                            check = ''
+                                                    }else{
+                                                        check = ''
+                                                    }                                                    
+                                                    lista[lista.length - 1].items[0].items.push(
+                                                        {
+                                                            xtype     : 'checkboxfield',
+                                                            boxLabel  : obj[chave][info][result][step].name,
+                                                            name      : obj[chave][info][result][step].name,                                                                    
+                                                            // id        : obj[chave][info][result][step].name,
+                                                            checked   : check,
+                                                            margin: '0 0 0 10',
                                                         }
-                                                        console.log(check)
+                                                    )
+                                                    
+                                                    configuration = obj[chave][info][result][step].configuration
+                                                    console.log(typeof configuration)
+                                                    if (typeof configuration !== 'undefined'){
                                                         lista[lista.length - 1].items[0].items.push(
-                                                                {
-                                                                    boxLabel  : obj[chave][info][result][step].name,
-                                                                    name      : obj[chave][info][result][step].name,                                                                    
-                                                                    // id        : obj[chave][info][result][step].name,
-                                                                    checked   : check,
-                                                                }
-                                                            )
+                                                            {
+                                                                xtype: 'button',
+                                                                iconCls: 'x-fa fa-cog',
+                                                                // height: 20,
+                                                                // width: 10,
+                                                                // text: 'Configuration',
+                                                                tooltip: 'Configuration',
+                                                                margin: '8 10 0 10',
+                                                                padding : '0 0 1 0'
+                                                                    
+                                                            }
+                                                        )
                                                     }
-                                                    // lista.push(
-                                                    //     {
-                                                    //         "title": obj[chave][info].name,
-                                                    //         items: [{
-                                                    //             xtype: 'fieldcontainer',
-                                                    //             // fieldLabel: 'Toppings',
-                                                    //             defaultType: 'checkboxfield',
-                                                    //             items: [
-                                                    //                 {
-                                                    //                     boxLabel  : obj[chave][info][result][step].name,
-                                                    //                     name      : obj[chave][info][result][step].name,                                                                    
-                                                    //                     // id        : obj[chave][info][result][step].name,
-                                                    //                     checked   : true,
-                                                    //                 }
-                                                    //             ]
-                                                    //         }]
-                                                    //     })
-                                                // }
+                                                }                                                
                                             }
                                         }
                                     }
