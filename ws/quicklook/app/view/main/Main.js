@@ -92,6 +92,7 @@ Ext.define('QuickLook.view.main.Main', {
     {
         title: 'QA',
         // iconCls: 'fa-users',
+        iconCls: 'x-fa fa-line-chart',
         bind: {
             html: '{loremIpsum}'
         }
