@@ -14,20 +14,20 @@ execulte o seguinte comando no terminal
 $ sudo vi /etc/apache2/apache2.conf
 
 Alterar o trecho:
-...
-Directory /var/www/>
-	Options Indexes FollowSymLinks
-    AllowOverride None
-    Require all granted
-...
+	...
+	Directory /var/www/>
+		Options Indexes FollowSymLinks
+	    AllowOverride None
+	    Require all granted
+	...
 
 para:
-...
-Directory .../seu-diretorio/qlf-frontend/>
-	Options Indexes FollowSymLinks
-    AllowOverride None
-    Require all granted
-...
+	...
+	Directory .../seu-diretorio/qlf-frontend/>
+		Options Indexes FollowSymLinks
+	    AllowOverride None
+	    Require all granted
+	...
 
 Arquivo 2:
 execulte o seguinte comando no terminal
