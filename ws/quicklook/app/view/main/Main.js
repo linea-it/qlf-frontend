@@ -15,7 +15,8 @@ Ext.define('QuickLook.view.main.Main', {
 
         'QuickLook.view.main.MainController',
         'QuickLook.view.main.MainModel',
-        'QuickLook.view.main.List'
+        'QuickLook.view.main.List',
+        'QuickLook.view.main.Configuration'
     ],
 
     controller: 'main',
@@ -59,6 +60,7 @@ Ext.define('QuickLook.view.main.Main', {
 
     defaults: {
         bodyPadding: 20,
+        
         tabConfig: {
             plugins: 'responsive',
             responsiveConfig: {
@@ -75,16 +77,34 @@ Ext.define('QuickLook.view.main.Main', {
         }
     },
 
+    
     items: [{
         title: 'Configuration',
         iconCls: 'fa-cog',
+        width: 500,
+        // height: 400,        
+        layout: {
+            type: 'hbox',
+            pack: 'start',
+            // align: 'stretch'
+        },
         // The following grid shares a store with the classic version's grid as well!
         items: [{
-            xtype: 'mainlist'
+            flex: 1,     
+            xtype: 'mainlist',
+            title: 'Teste',
+            margin: '0 10 0 0',
+        },{
+            flex: 1,
+            xtype: 'config',
+            reference: 'Configuration',
+            title: 'Configuration',
+            
+
         }]
     }, {
         title: 'Monitor',
-        // iconCls: 'fa-user',
+        iconCls: 'x-fa fa-line-chart',
         bind: {
             html: '{loremIpsum}'
         }
