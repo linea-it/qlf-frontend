@@ -24,7 +24,7 @@ Ext.define('QuickLook.view.main.MainController', {
             // exapmple json response
             me = this           
             Ext.Ajax.request({
-                url: "/qlf-frontend/ws/test.json",               
+                url: "/qlf-frontend/test.json",               
                 success: function(response) {
                     var obj = Ext.decode(response.responseText);
                     // console.log(obj)
