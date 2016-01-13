@@ -1,38 +1,218 @@
-{  
-  "name":"Quick Look",
-  "tasks" : [ 
-      { 
-       "name": " task1 ", 
-       "steps" : [ 
-          { 
-            "name" : " step1",
-            "checked" : "True",
-            "source" : "module1",
-            "configuration" : [  { "parameter":"", "value":"" } ] 
-          }
-         ] 
-       },
-      { 
-       "name": " task2 ", 
-       "steps" : [ 
-          { 
-            "name" : " step2",
-            "checked" : "True",
-            "source" : "module2 ",
-            "configuration" : [  { "parameter":"p1", "value":"0" } ] 
-          },
-          {  
-            "name":" step3",
-            "checked" : "Flase",
-            "source":"module3",
-            "requires": [ {"step" : "step2" } ]  
-          },
-          {  
-            "name":"step4",
-            "checked" : "True",
-            "source":"module4"
-          }      
-        ]
+{
+   "PipeLine":[
+      {
+         
+         "Modules":[
+            {
+               "ClassName":"BiasSubtraction",
+               "ModuleName":"ProcAlgs",
+               "Name":"Bias Subtraction",
+               "kwargs":{
+                  "BiasImage":"%%BiasImage"
+               }
+            },
+            {
+               "ClassName":"Get_RMS",
+               "ModuleName":"MonAlgs",
+               "Name":"Get RMS",
+               "kwargs":[
+
+               ]
+            },
+            {
+               "ClassName":"Count_Pixels",
+               "ModuleName":"MonAlgs",
+               "Name":"Count Pixels",
+               "kwargs":[
+                  {
+                     "default":"3.0",
+                     "type":"textfield",
+                     "id":"mytext1",
+                     "label":"Width"
+                  }
+               ]
+            },
+         ],
+         "OutputFile":"step1.pkl",
+         "StepName":"Preprocessing-Bias Subtraction",
+      },
+      {
+         
+         "Modules":[
+            {
+               "ClassName":"DarkSubtraction",
+               "ModuleName":"ProcAlgs",
+               "Name":"Dark Subtraction",
+               "kwargs":{
+                  "DarkImage":"%%DarkImage"
+               }
+            },
+            {
+               "ClassName":"Get_RMS",
+               "ModuleName":"MonAlgs",
+               "Name":"Get RMS",
+               "kwargs":[
+
+               ]
+            },
+            {
+               "ClassName":"Count_Pixels",
+               "ModuleName":"MonAlgs",
+               "Name":"Count Pixels",
+               "kwargs":[
+                  {
+                     "default":"3.0",
+                     "type":"textfield",
+                     "id":"mytext2",
+                     "label":"Width"
+                  }
+               ]
+            }
+         ],
+         "OutputFile":"step2.pkl",
+         "StepName":"Preprocessing-Dark Subtraction",
+      },
+      {
+         
+         "Modules":[
+            {
+               "ClassName":"PixelFlattening",
+               "ModuleName":"ProcAlgs",
+               "Name":"Pixel Flattening",
+               "kwargs":[
+                  {
+                     "default":"%%PixelFlat",
+                     "type":"textfield",
+                     "id":"mytext3",
+                     "label":"PixelFlat"
+                  }
+               ]
+            },
+            {
+               "ClassName":"Get_RMS",
+               "ModuleName":"MonAlgs",
+               "Name":"Get RMS",
+               "kwargs":[
+
+               ]
+            },
+            {
+               "ClassName":"Count_Pixels",
+               "ModuleName":"MonAlgs",
+               "Name":"Count Pixels",
+               "kwargs":[
+                  {
+                     "default":"3.0",
+                     "type":"textfield",
+                     "id":"mytext4",
+                     "label":"Width"
+                  }
+               ]
+            }
+         ],
+         "OutputFile":"step3.pkl",
+         "StepName":"Preprocessing-Pixel Flattening",
+      },
+      {
+         
+         "Modules":[
+            {
+               "ClassName":"BoxcarExtraction",
+               "ModuleName":"ProcAlgs",
+               "Name":"Boxcar Extraction",
+               "kwargs":[
+                  {
+                     "default":"r",
+                     "items":[
+                        "g",
+                        "r",
+                        "i",
+                        "z"
+                     ],
+                     "type":"combobox",
+                     "id":"combo1",
+                     "label":"Band"
+                  },
+                  {
+                     "default":"2.5",
+                     "type":"textfield",
+                     "id":"mytext5",
+                     "label":"BoxWidth"
+                  },
+                  {
+                     "default":"0.5",
+                     "type":"textfield",
+                     "id":"mytext6",
+                     "label":"DeltaW"
+                  },
+                  {
+                     "default":"%%FiberMap",
+                     "type":"textfield",
+                     "id":"mytext7",
+                     "label":"FiberMap"
+                  },
+                  {
+                     "default":"%%PSFFile",
+                     "type":"textfield",
+                     "id":"mytext8",
+                     "label":"PSFFile"
+                  },
+                  {
+                     "default":"0",
+                     "type":"textfield",
+                     "id":"mytext9",
+                     "label":"Spectrograph"
+                  },
+                  {
+                     "default":"7741",
+                     "type":"textfield",
+                     "id":"mytext10",
+                     "label":"Wmax"
+                  },
+                  {
+                     "default":"5625",
+                     "type":"textfield",
+                     "id":"mytext11",
+                     "label":"Wmin"
+                  }
+               ]                
+            },
+            {
+               "ClassName":"Find_Sky_Continuum",
+               "ModuleName":"MonAlgs",
+               "Name":"Find Sky Continuum",
+               "kwargs":[
+                  {
+                     "default":"%%FiberMap",
+                     "type":"textfield",
+                     "id":"mytext12",
+                     "label":"FiberMap"
+                  },
+                  {
+                     "default":"None",
+                     "type":"textfield",
+                     "id":"mytext13",
+                     "label":"Wmax"
+                  },
+                  {
+                     "default":"None",
+                     "type":"textfield",
+                     "id":"mytext14",
+                     "label":"Wmin"
+                  }
+               ]
+            },
+            {
+               "ClassName":"Calculate_SNR",
+               "ModuleName":"MonAlgs",
+               "Name":"Calculate Signal-to-Noise ratio",
+               "kwargs":[
+
+               ]
+            }
+         ],
+          "OutputFile":"step4.pkl",
+          "StepName":"Boxcar Extration",
       }
-]
+   ]
 }

@@ -12,7 +12,7 @@ Ext.define('QuickLook.view.main.Main', {
     requires: [
         'Ext.plugin.Viewport',
         'Ext.window.MessageBox',
-
+        'QuickLook.view.main.MainPanel',
         'QuickLook.view.main.MainController',
         'QuickLook.view.main.MainModel',
         'QuickLook.view.main.List',
@@ -76,31 +76,26 @@ Ext.define('QuickLook.view.main.Main', {
             }
         }
     },
-
+    // listeners: {
+    //     afterrender: 'teste'
+    // },
     
     items: [{
         title: 'Configuration',
         iconCls: 'fa-cog',
         width: 500,
         // height: 400,        
-        layout: {
-            type: 'hbox',
-            pack: 'start',
-            // align: 'stretch'
-        },
+        // layout: {
+        //     type: 'hbox',
+        //     pack: 'start',
+        //     // align: 'stretch'
+        // },
         // The following grid shares a store with the classic version's grid as well!
         items: [{
             flex: 1,     
             xtype: 'mainlist',
-            title: 'Teste',
+            // title: ' &nbsp',
             margin: '0 10 0 0',
-        },{
-            flex: 1,
-            xtype: 'config',
-            reference: 'Configuration',
-            title: 'Configuration',
-            
-
         }]
     }, {
         title: 'Monitor',

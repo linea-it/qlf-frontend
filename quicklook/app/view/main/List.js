@@ -3,13 +3,13 @@
  */
 Ext.define('QuickLook.view.main.List', {
     extend: 'Ext.panel.Panel',
-    xtype: 'mainlist',
+    xtype: 'list',
 
     requires: [
         'QuickLook.store.Personnel',
-        'QuickLook.view.main.MainController'
+    
+
     ],
-    controller: 'main', 
     
     layout: 'accordion',
     frame: true,

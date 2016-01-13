@@ -8,8 +8,7 @@ Ext.define('QuickLook.view.main.MainController', {
     extend: 'Ext.app.ViewController',
 
     alias: 'controller.main',
-
-
+    
     onItemSelected: function (sender, record) {
         Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
     },
@@ -22,6 +21,9 @@ Ext.define('QuickLook.view.main.MainController', {
     
     render: function (accordionPanel) {
             // exapmple json response
+            panel = this.getView()            
+            refs = panel.getReferences()            
+            grid = refs.accordion
             me = this           
             Ext.Ajax.request({
                 url: "/qlf-frontend/test.json",               
@@ -36,15 +38,23 @@ Ext.define('QuickLook.view.main.MainController', {
                         return array.indexOf(value) > -1;
                     }
                     for(var chave in obj) {
+                        // console.log('chave ==>(%o)', chave)
                         if (chave != 'name'){
                             for(var info in obj[chave]){
-                                for (var result in obj[chave][info]){
+                                // console.log('obj[chave][info].Name ==>(%o)', obj[chave][info].StepName)
+                                for (var result in obj[chave][info]){                                    
                                     if (result != 'name'){
-                                        if (isInArray(obj[chave][info].name, listaAux) != true){
-                                            listaAux.push(obj[chave][info].name)
+                                        // console.log('obj[chave][info][result] ==>(%o)', obj[chave][info][result])
+                                        // console.log('obj[chave][info] ==>(%o)', obj[chave][info].StepName)
+                                        if (isInArray(obj[chave][info].StepName, listaAux) != true){
+                                            listaAux.push(obj[chave][info].StepName)
+                                            // console.log('chave ==>(%o)', chave)
+                                            // console.log('obj[chave] ==>(%o)', obj[chave])
+                                            // console.log('info==>(%o)', info)
+                                            // console.log('obj[chave][info] ==>(%o)', obj[chave][info].StepName)
                                             lista.push(
                                                 {
-                                                    "title": obj[chave][info].name,
+                                                    "title": obj[chave][info].StepName,
                                                     items: [{                                                        
                                                         xtype: 'fieldcontainer',
                                                         // fieldLabel: 'Toppings',
@@ -57,27 +67,31 @@ Ext.define('QuickLook.view.main.MainController', {
                                             )
                                         }
                                         for (var step in obj[chave][info][result]){
+                                            // console.log(typeof(obj[chave][info][result][step]))
+                                            if (typeof(obj[chave][info][result][step]) == 'object'){
+                                                // console.log('obj[chave][info][result][step].Name ==>(%o)', obj[chave][info][result][step].Name)
+                                            }
                                             for (var name in obj[chave][info][result][step]){
-                                                if (isInArray(obj[chave][info][result][step].name, listaAuxSteps) != true){
-                                                    listaAuxSteps.push(obj[chave][info][result][step].name)
+                                                if (isInArray(obj[chave][info][result][step].Name+obj[chave][info].StepName, listaAuxSteps) != true){
+                                                    listaAuxSteps.push(obj[chave][info][result][step].Name+obj[chave][info].StepName)
                                                     if (obj[chave][info][result][step].checked == 'True'){
                                                         check = 'true'
-
                                                     }else{
                                                         check = ''
-                                                    }                                                    
+                                                    }
+                                                    // console.log('obj[chave][info][result][step] ==>(%o)', obj[chave][info][result][step])                                                  
                                                     lista[lista.length - 1].items[0].items.push(
                                                         {
                                                             xtype     : 'checkboxfield',
-                                                            boxLabel  : obj[chave][info][result][step].name,
-                                                            name      : obj[chave][info][result][step].name,                                                                    
+                                                            boxLabel  : obj[chave][info][result][step].Name,
+                                                            name      : obj[chave][info][result][step].Name,                                                                    
                                                             // id        : obj[chave][info][result][step].name,
                                                             checked   : check,
                                                             margin: '0 0 0 10',
                                                         }
                                                     )
                                                     
-                                                    configuration = obj[chave][info][result][step].configuration
+                                                    configuration = obj[chave][info][result][step].kwargs
                                                     // console.log(typeof configuration)
                                                     if (typeof configuration !== 'undefined'){
                                                         lista[lista.length - 1].items[0].items.push(
@@ -87,10 +101,10 @@ Ext.define('QuickLook.view.main.MainController', {
                                                                 tooltip: 'Configuration',
                                                                 margin: '8 10 0 10',
                                                                 padding : '0 0 1 0',
-                                                                handler: function() {
-                                                                    // alert('You clicked the button!');
-                                                                    // console.log(me)
-                                                                    me.setConfiguration()
+                                                                value : {"args": obj[chave][info][result][step].kwargs, "StepName" :obj[chave][info].StepName + '(' + obj[chave][info][result][step].Name + ')'},                                                       
+                                                                handler: function(a, b) {
+                                                                    // console.log(this.value)
+                                                                    me.setConfiguration(this.value.args, this.value.StepName)
                                                                 }
                                                                     
                                                             }
@@ -109,17 +123,34 @@ Ext.define('QuickLook.view.main.MainController', {
                 }
             })            
         },
-        setConfiguration: function() {
+        teste: function() {
             // console.log("onSelectReleaseField(%o, %o. %o)", release, field, combo);
 
             var refs = this.getReferences();
                 // conf = refs.Configuration;
                 // storeDI = gridDI.getStore();
-           
-            console.log(this)
-            teste = this.getStore('personnel')
-            console.log(teste)
+            teste = this.getView()
+            console.log(refs)
+            // teste = this.getStore('personnel')
+            // console.log(teste)
             
+        },
+        setConfiguration: function(args, StepName) {
+            panel = this.getView()            
+            refs = panel.getReferences()            
+            grid = refs.configuration
+            panelgrid = refs.panelgrid
+            panelgrid.setTitle(StepName);
+            
+            // console.log("args.length(%o)", args.length);
+            if (args.length > 0){
+                for (var i = args.length - 1; i >= 0; i--) {
+                    // console.log("args[i](%o)", args[i]);
+                    grid.setSource(args[i]);
+                };
+            }else{
+                grid.setSource(args);
+            }
         }
 
 });
