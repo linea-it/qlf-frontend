@@ -1,218 +1,289 @@
 {
-   "PipeLine":[
+   "name":"pipeline1",
+   "tasks":[
       {
-         
-         "Modules":[
+         "steps":[
             {
-               "ClassName":"BiasSubtraction",
-               "ModuleName":"ProcAlgs",
-               "Name":"Bias Subtraction",
-               "kwargs":{
-                  "BiasImage":"%%BiasImage"
-               }
-            },
-            {
-               "ClassName":"Get_RMS",
-               "ModuleName":"MonAlgs",
-               "Name":"Get RMS",
-               "kwargs":[
-
-               ]
-            },
-            {
-               "ClassName":"Count_Pixels",
-               "ModuleName":"MonAlgs",
-               "Name":"Count Pixels",
-               "kwargs":[
+               "source":"ProcAlgs",
+               "name":"Bias Subtraction",
+               "checked":"True",
+               "configuration":[
                   {
-                     "default":"3.0",
-                     "type":"textfield",
-                     "id":"mytext1",
-                     "label":"Width"
+                     "default":"%%BiasImage",
+                     "id":"BiasImage1",
+                     "label":"BiasImage",
+                     "type":"textfield"
+                  },
+                  {
+                     "default":"step1.pkl",
+                     "id":"OutputFile1",
+                     "label":"OutputFile",
+                     "type":"textfield"
                   }
                ]
             },
-         ],
-         "OutputFile":"step1.pkl",
-         "StepName":"Preprocessing-Bias Subtraction",
-      },
-      {
-         
-         "Modules":[
             {
-               "ClassName":"DarkSubtraction",
-               "ModuleName":"ProcAlgs",
-               "Name":"Dark Subtraction",
-               "kwargs":{
-                  "DarkImage":"%%DarkImage"
-               }
-            },
-            {
-               "ClassName":"Get_RMS",
-               "ModuleName":"MonAlgs",
-               "Name":"Get RMS",
-               "kwargs":[
-
+               "source":"MonAlgs",
+               "checked":"True",
+               "name":"Get RMS",
+               "configuration":[
+                  {
+                     "default":"step1.pkl",
+                     "id":"OutputFile2",
+                     "label":"OutputFile",
+                     "type":"textfield"
+                  }
                ]
             },
             {
-               "ClassName":"Count_Pixels",
-               "ModuleName":"MonAlgs",
-               "Name":"Count Pixels",
-               "kwargs":[
+               "source":"MonAlgs",
+               "name":"Count Pixels",
+               "checked":"True",
+               "configuration":[
                   {
                      "default":"3.0",
-                     "type":"textfield",
-                     "id":"mytext2",
-                     "label":"Width"
+                     "id":"Width1",
+                     "label":"Width",
+                     "type":"textfield"
+                  },
+                  {
+                     "default":"step1.pkl",
+                     "id":"OutputFile3",
+                     "label":"OutputFile",
+                     "type":"textfield"
                   }
                ]
             }
          ],
-         "OutputFile":"step2.pkl",
-         "StepName":"Preprocessing-Dark Subtraction",
+         "name":"Preprocessing-Bias Subtraction"
       },
       {
-         
-         "Modules":[
+         "steps":[
             {
-               "ClassName":"PixelFlattening",
-               "ModuleName":"ProcAlgs",
-               "Name":"Pixel Flattening",
-               "kwargs":[
+               "source":"ProcAlgs",
+               "name":"Dark Subtraction",
+               "checked":"True",
+               "configuration":[
+                  {
+                     "default":"%%DarkImage",
+                     "id":"DarkImage1",
+                     "label":"DarkImage",
+                     "type":"textfield"
+                  },
+                  {
+                     "default":"step2.pkl",
+                     "id":"OutputFile4",
+                     "label":"OutputFile",
+                     "type":"textfield"
+                  }
+               ]
+            },
+            {
+               "source":"MonAlgs",
+               "name":"Get RMS",
+               "checked":"True",
+               "configuration":[
+                  {
+                     "default":"step2.pkl",
+                     "id":"OutputFile5",
+                     "label":"OutputFile",
+                     "type":"textfield"
+                  }
+               ]
+            },
+            {
+               "source":"MonAlgs",
+               "name":"Count Pixels",
+               "checked":"True",
+               "configuration":[
+                  {
+                     "default":"3.0",
+                     "id":"Width2",
+                     "label":"Width",
+                     "type":"textfield"
+                  },
+                  {
+                     "default":"step2.pkl",
+                     "id":"OutputFile6",
+                     "label":"OutputFile",
+                     "type":"textfield"
+                  }
+               ]
+            }
+         ],
+         "name":"Preprocessing-Dark Subtraction"
+      },
+      {
+         "steps":[
+            {
+               "source":"ProcAlgs",
+               "name":"Pixel Flattening",
+               "checked":"True",
+               "configuration":[
                   {
                      "default":"%%PixelFlat",
-                     "type":"textfield",
-                     "id":"mytext3",
-                     "label":"PixelFlat"
+                     "id":"PixelFlat1",
+                     "label":"PixelFlat",
+                     "type":"textfield"
+                  },
+                  {
+                     "default":"step3.pkl",
+                     "id":"OutputFile7",
+                     "label":"OutputFile",
+                     "type":"textfield"
                   }
                ]
             },
             {
-               "ClassName":"Get_RMS",
-               "ModuleName":"MonAlgs",
-               "Name":"Get RMS",
-               "kwargs":[
-
+               "source":"MonAlgs",
+               "name":"Get RMS",
+               "checked":"True",
+               "configuration":[
+                  {
+                     "default":"step3.pkl",
+                     "id":"OutputFile8",
+                     "label":"OutputFile",
+                     "type":"textfield"
+                  }
                ]
             },
             {
-               "ClassName":"Count_Pixels",
-               "ModuleName":"MonAlgs",
-               "Name":"Count Pixels",
-               "kwargs":[
+               "source":"MonAlgs",
+               "name":"Count Pixels",
+               "checked":"True",
+               "configuration":[
                   {
                      "default":"3.0",
-                     "type":"textfield",
-                     "id":"mytext4",
-                     "label":"Width"
+                     "id":"Width3",
+                     "label":"Width",
+                     "type":"textfield"
+                  },
+                  {
+                     "default":"step3.pkl",
+                     "id":"OutputFile9",
+                     "label":"OutputFile",
+                     "type":"textfield"
                   }
                ]
             }
          ],
-         "OutputFile":"step3.pkl",
-         "StepName":"Preprocessing-Pixel Flattening",
+         "name":"Preprocessing-Pixel Flattening"
       },
       {
-         
-         "Modules":[
+         "steps":[
             {
-               "ClassName":"BoxcarExtraction",
-               "ModuleName":"ProcAlgs",
-               "Name":"Boxcar Extraction",
-               "kwargs":[
+               "source":"ProcAlgs",
+               "name":"Boxcar Extraction",
+               "checked":"True",
+               "configuration":[
                   {
-                     "default":"r",
-                     "items":[
-                        "g",
-                        "r",
-                        "i",
-                        "z"
-                     ],
-                     "type":"combobox",
-                     "id":"combo1",
-                     "label":"Band"
+                    "type": "choice",
+                    "name": "nomedoparamtro_EstadoCivil",
+                    "display_name": "Estado Civil",
+                    "defaultValue": 2,
+                    "options": [
+                            {"abbr":"AL", "name":"Alabama"},
+                            {"abbr":"AK", "name":"Alaska"},
+                            {"abbr":"AZ", "name":"Arizona"}
+                        ]
+                      // opcionais
                   },
                   {
                      "default":"2.5",
-                     "type":"textfield",
-                     "id":"mytext5",
-                     "label":"BoxWidth"
+                     "id":"BoxWidth1",
+                     "label":"BoxWidth",
+                     "type":"textfield"
                   },
                   {
                      "default":"0.5",
-                     "type":"textfield",
-                     "id":"mytext6",
-                     "label":"DeltaW"
+                     "id":"DeltaW1",
+                     "label":"DeltaW",
+                     "type":"textfield"
                   },
                   {
                      "default":"%%FiberMap",
-                     "type":"textfield",
-                     "id":"mytext7",
-                     "label":"FiberMap"
+                     "id":"FiberMap1",
+                     "label":"FiberMap",
+                     "type":"textfield"
                   },
                   {
                      "default":"%%PSFFile",
-                     "type":"textfield",
-                     "id":"mytext8",
-                     "label":"PSFFile"
+                     "id":"PSFFile1",
+                     "label":"PSFFile",
+                     "type":"textfield"
                   },
                   {
                      "default":"0",
-                     "type":"textfield",
-                     "id":"mytext9",
-                     "label":"Spectrograph"
+                     "id":"Spectrograph1",
+                     "label":"Spectrograph",
+                     "type":"textfield"
                   },
                   {
                      "default":"7741",
-                     "type":"textfield",
-                     "id":"mytext10",
-                     "label":"Wmax"
+                     "id":"Wmax1",
+                     "label":"Wmax",
+                     "type":"textfield"
                   },
                   {
                      "default":"5625",
-                     "type":"textfield",
-                     "id":"mytext11",
-                     "label":"Wmin"
-                  }
-               ]                
-            },
-            {
-               "ClassName":"Find_Sky_Continuum",
-               "ModuleName":"MonAlgs",
-               "Name":"Find Sky Continuum",
-               "kwargs":[
-                  {
-                     "default":"%%FiberMap",
-                     "type":"textfield",
-                     "id":"mytext12",
-                     "label":"FiberMap"
+                     "id":"Wmin1",
+                     "label":"Wmin",
+                     "type":"textfield"
                   },
                   {
-                     "default":"None",
-                     "type":"textfield",
-                     "id":"mytext13",
-                     "label":"Wmax"
-                  },
-                  {
-                     "default":"None",
-                     "type":"textfield",
-                     "id":"mytext14",
-                     "label":"Wmin"
+                     "default":"step4.pkl",
+                     "id":"OutputFile10",
+                     "label":"OutputFile",
+                     "type":"textfield"
                   }
                ]
             },
             {
-               "ClassName":"Calculate_SNR",
-               "ModuleName":"MonAlgs",
-               "Name":"Calculate Signal-to-Noise ratio",
-               "kwargs":[
-
+               "source":"MonAlgs",
+               "name":"Find Sky Continuum",
+               "checked":"True",
+               "configuration":[
+                  {
+                     "default":"%%FiberMap",
+                     "id":"FiberMap2",
+                     "label":"FiberMap",
+                     "type":"textfield"
+                  },
+                  {
+                     "default":"None",
+                     "id":"Wmax2",
+                     "label":"Wmax",
+                     "type":"textfield"
+                  },
+                  {
+                     "default":"None",
+                     "id":"Wmin2",
+                     "label":"Wmin",
+                     "type":"textfield"
+                  },
+                  {
+                     "default":"step4.pkl",
+                     "id":"OutputFile11",
+                     "label":"OutputFile",
+                     "type":"textfield"
+                  }
+               ]
+            },
+            {
+               "source":"MonAlgs",
+               "name":"Calculate Signal-to-Noise ratio",
+               "checked":"True",
+               "configuration":[
+                  {
+                     "default":"step4.pkl",
+                     "id":"OutputFile12",
+                     "label":"OutputFile",
+                     "type":"textfield"
+                  }
                ]
             }
          ],
-          "OutputFile":"step4.pkl",
-          "StepName":"Boxcar Extration",
+         "name":"Boxcar Extration"
       }
    ]
 }
