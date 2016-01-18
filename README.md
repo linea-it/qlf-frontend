@@ -13,7 +13,7 @@ Clone this repo:
 ```
 git clone https://github.com/linea-it/qlf-frontend
 ```
-and buil the app:
+and build the app:
 
 ``` 
 cd qlf-frontend
