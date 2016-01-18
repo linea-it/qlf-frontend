@@ -11,14 +11,14 @@
                   {
                      "default":"%%BiasImage",
                      "id":"BiasImage1",
-                     "label":"BiasImage",
-                     "type":"textfield"
+                     "name":"BiasImage",
+                     "type":"text"
                   },
                   {
                      "default":"step1.pkl",
                      "id":"OutputFile1",
-                     "label":"OutputFile",
-                     "type":"textfield"
+                     "name":"OutputFile",
+                     "type":"text"
                   }
                ]
             },
@@ -30,8 +30,8 @@
                   {
                      "default":"step1.pkl",
                      "id":"OutputFile2",
-                     "label":"OutputFile",
-                     "type":"textfield"
+                     "name":"OutputFile",
+                     "type":"text"
                   }
                ]
             },
@@ -43,14 +43,15 @@
                   {
                      "default":"3.0",
                      "id":"Width1",
-                     "label":"Width",
-                     "type":"textfield"
+                     "name":"Width",
+                     "type":"number",
+                     "allowDecimals": "true"
                   },
                   {
                      "default":"step1.pkl",
                      "id":"OutputFile3",
-                     "label":"OutputFile",
-                     "type":"textfield"
+                     "name":"OutputFile",
+                     "type":"text"
                   }
                ]
             }
@@ -67,14 +68,14 @@
                   {
                      "default":"%%DarkImage",
                      "id":"DarkImage1",
-                     "label":"DarkImage",
-                     "type":"textfield"
+                     "name":"DarkImage",
+                     "type":"text"
                   },
                   {
                      "default":"step2.pkl",
                      "id":"OutputFile4",
-                     "label":"OutputFile",
-                     "type":"textfield"
+                     "name":"OutputFile",
+                     "type":"text"
                   }
                ]
             },
@@ -86,8 +87,8 @@
                   {
                      "default":"step2.pkl",
                      "id":"OutputFile5",
-                     "label":"OutputFile",
-                     "type":"textfield"
+                     "name":"OutputFile",
+                     "type":"text"
                   }
                ]
             },
@@ -99,14 +100,15 @@
                   {
                      "default":"3.0",
                      "id":"Width2",
-                     "label":"Width",
-                     "type":"textfield"
+                     "name":"Width",
+                     "type":"number",
+                     "allowDecimals": "true"
                   },
                   {
                      "default":"step2.pkl",
                      "id":"OutputFile6",
-                     "label":"OutputFile",
-                     "type":"textfield"
+                     "name":"OutputFile",
+                     "type":"text"
                   }
                ]
             }
@@ -123,14 +125,14 @@
                   {
                      "default":"%%PixelFlat",
                      "id":"PixelFlat1",
-                     "label":"PixelFlat",
-                     "type":"textfield"
+                     "name":"PixelFlat",
+                     "type":"text"
                   },
                   {
                      "default":"step3.pkl",
                      "id":"OutputFile7",
-                     "label":"OutputFile",
-                     "type":"textfield"
+                     "name":"OutputFile",
+                     "type":"text"
                   }
                ]
             },
@@ -142,8 +144,8 @@
                   {
                      "default":"step3.pkl",
                      "id":"OutputFile8",
-                     "label":"OutputFile",
-                     "type":"textfield"
+                     "name":"OutputFile",
+                     "type":"text"
                   }
                ]
             },
@@ -155,14 +157,15 @@
                   {
                      "default":"3.0",
                      "id":"Width3",
-                     "label":"Width",
-                     "type":"textfield"
+                     "name":"Width",
+                     "type":"number",
+                     "allowDecimals": "true"
                   },
                   {
                      "default":"step3.pkl",
                      "id":"OutputFile9",
-                     "label":"OutputFile",
-                     "type":"textfield"
+                     "name":"OutputFile",
+                     "type":"text"
                   }
                ]
             }
@@ -178,59 +181,66 @@
                "configuration":[
                   {
                     "type": "select",
-                    "id": "select1",
-                    "name": "My Select",
+                    "id": "Band1",
+                    "name": "Band",
                     "default": 0,
-                    "options": [{'value':0, 'name': "Option 1"}, 
-                                {'value':1, 'name': "Option 2"}]
+                    "options": [{'value':0, 'name': "r"}, 
+                                {'value':1, 'name': "g"}]
+                                {'value':2, 'name': "i"}]
+                                {'value':3, 'name': "z"}]
                   },
                   {
                      "default":"2.5",
                      "id":"BoxWidth1",
-                     "label":"BoxWidth",
-                     "type":"textfield"
+                     "name":"BoxWidth",
+                     "type":"number",
+                     "allowDecimals": "true"
                   },
                   {
                      "default":"0.5",
                      "id":"DeltaW1",
-                     "label":"DeltaW",
-                     "type":"textfield"
+                     "name":"DeltaW",
+                     "type":"number",
+                     "allowDecimals": "true"
                   },
                   {
                      "default":"%%FiberMap",
                      "id":"FiberMap1",
-                     "label":"FiberMap",
-                     "type":"textfield"
+                     "name":"FiberMap",
+                     "type":"text"
                   },
                   {
                      "default":"%%PSFFile",
                      "id":"PSFFile1",
-                     "label":"PSFFile",
-                     "type":"textfield"
+                     "name":"PSFFile",
+                     "type":"text"
                   },
                   {
                      "default":"0",
                      "id":"Spectrograph1",
-                     "label":"Spectrograph",
-                     "type":"textfield"
+                     "name":"Spectrograph",
+                     "type":"number",
+                     "allowDecimals": "true"
                   },
                   {
                      "default":"7741",
                      "id":"Wmax1",
-                     "label":"Wmax",
-                     "type":"textfield"
+                     "name":"Wmax",
+                     "type":"number",
+                     "allowDecimals": "true"
                   },
                   {
                      "default":"5625",
                      "id":"Wmin1",
-                     "label":"Wmin",
-                     "type":"textfield"
+                     "name":"Wmin",
+                     "type":"number",
+                     "allowDecimals": "true"
                   },
                   {
                      "default":"step4.pkl",
                      "id":"OutputFile10",
-                     "label":"OutputFile",
-                     "type":"textfield"
+                     "name":"OutputFile",
+                     "type":"text"
                   }
                ]
             },
@@ -242,26 +252,28 @@
                   {
                      "default":"%%FiberMap",
                      "id":"FiberMap2",
-                     "label":"FiberMap",
-                     "type":"textfield"
+                     "name":"FiberMap",
+                     "type":"text"
                   },
                   {
                      "default":"None",
                      "id":"Wmax2",
-                     "label":"Wmax",
-                     "type":"textfield"
+                     "name":"Wmax",
+                     "type":"number",
+                     "allowDecimals": "true"
                   },
                   {
                      "default":"None",
                      "id":"Wmin2",
-                     "label":"Wmin",
-                     "type":"textfield"
+                     "name":"Wmin",
+                     "type":"number",
+                     "allowDecimals": "true"
                   },
                   {
                      "default":"step4.pkl",
                      "id":"OutputFile11",
-                     "label":"OutputFile",
-                     "type":"textfield"
+                     "name":"OutputFile",
+                     "type":"text"
                   }
                ]
             },
@@ -273,8 +285,8 @@
                   {
                      "default":"step4.pkl",
                      "id":"OutputFile12",
-                     "label":"OutputFile",
-                     "type":"textfield"
+                     "name":"OutputFile",
+                     "type":"text"
                   }
                ]
             }
