@@ -8,7 +8,7 @@ Ext.define('QuickLook.view.main.MainController', {
     extend: 'Ext.app.ViewController',
 
     alias: 'controller.main',
-    
+
     onItemSelected: function (sender, record) {
         Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
     },
@@ -18,15 +18,15 @@ Ext.define('QuickLook.view.main.MainController', {
             //
         }
     },
-    
+
     render: function (accordionPanel) {
             // exapmple json response
-            panel = this.getView()            
-            refs = panel.getReferences()            
+            panel = this.getView()
+            refs = panel.getReferences()
             grid = refs.accordion
-            me = this           
+            me = this
             Ext.Ajax.request({
-                url: "/pipelines/ql.json",               
+                url: "/qlf-frontend/pipelines/ql.json",
                 success: function(response) {
                     var obj = Ext.decode(response.responseText);
                     // console.log(obj)
@@ -45,20 +45,20 @@ Ext.define('QuickLook.view.main.MainController', {
                         lista.push(
                             {
                                 "title": obj['tasks'][i].name,
-                                items: [{                                                        
-                                    xtype: 'fieldcontainer',                                    
+                                items: [{
+                                    xtype: 'fieldcontainer',
                                     layout: 'hbox',
                                     items:[]
                                     }
                                 ]
                             }
                         )
-                        for (var s = 0; s < obj['tasks'][i].steps.length; s++) {                            
+                        for (var s = 0; s < obj['tasks'][i].steps.length; s++) {
                             lista[lista.length - 1].items[0].items.push(
                                 {
                                     xtype     : 'checkboxfield',
                                     boxLabel  : obj['tasks'][i].steps[s].name,
-                                    name      : 'teste', 
+                                    name      : 'teste',
                                     // id        : obj[chave][info][result][step].name,
                                     checked   : true,
                                     margin: '0 0 0 10',
@@ -70,40 +70,40 @@ Ext.define('QuickLook.view.main.MainController', {
                                 lista[lista.length - 1].items[0].items.push(
                                     {
                                         xtype: 'button',
-                                        iconCls: 'x-fa fa-cog',                                                                
+                                        iconCls: 'x-fa fa-cog',
                                         tooltip: 'Configuration',
                                         margin: '8 10 0 10',
                                         padding : '0 0 1 0',
-                                        value : {"args": obj['tasks'][i].steps[s].configuration, "StepName" : obj['tasks'][i].name +'('+ obj['tasks'][i].steps[s].name +')'},//obj[chave][info].StepName + '(' + obj[chave][info][result][step].Name + ')'},                                                       
+                                        value : {"args": obj['tasks'][i].steps[s].configuration, "StepName" : obj['tasks'][i].name +'('+ obj['tasks'][i].steps[s].name +')'},//obj[chave][info].StepName + '(' + obj[chave][info][result][step].Name + ')'},
                                         handler: function() {
                                             // console.log(this.value)
                                             me.setConfiguration(this.value.args, this.value.StepName)
                                         }
-                                            
+
                                     }
                                 )
-                            }                        
+                            }
                         };
                     };
-                    console.log(lista)                    
-                    data = lista;            
-                    accordionPanel.add(data);                    
+                    // console.log(lista)
+                    data = lista;
+                    accordionPanel.add(data);
                 }
-            })            
+            })
         },
         getType: function(teste){
 
             if (teste['type'] == 'choice'){
-                console.log("teste(%o)", teste);
+                // console.log("teste(%o)", teste);
                 options = teste['options']
-                console.log("options(%o)", options);                
+                // console.log("options(%o)", options);
                 store =  Ext.create('Ext.data.Store', {
                     fields: ['abbr', 'name'],
                     data: options
                 })
-                name = options[0]['name']                
+                name = options[0]['name']
                 grid.setSource({
-                abbr: options[0]['name'],                
+                abbr: options[0]['name'],
                 },{
                     abbr: {
                         displayName: 'Choose State',
@@ -113,11 +113,11 @@ Ext.define('QuickLook.view.main.MainController', {
                             valueField: 'abbr',
                             // displayField: 'name',
                             defaultValue: 'AK'
-                        }) 
+                        })
                     }
                 });
                 }else{
-                    console.log("teste(%o)", teste);
+                    // console.log("teste(%o)", teste);
                     grid.setSource(teste)
                 }
         },
@@ -131,28 +131,30 @@ Ext.define('QuickLook.view.main.MainController', {
             console.log(refs)
             // teste = this.getStore('personnel')
             // console.log(teste)
-            
+
         },
         setConfiguration: function(args, StepName) {
-            panel = this.getView()            
-            refs = panel.getReferences()            
+            panel = this.getView()
+            refs = panel.getReferences()
             grid = refs.configuration
             panelgrid = refs.panelgrid
             panelgrid.setTitle(StepName);
-            
-            console.log("args.length(%o)", args.length);
+
+            teste = Array();
+
+            // console.log("args.length(%o)", args.length);
             if (args.length > 0){
                 for (var i = args.length - 1; i >= 0; i--) {
                     // console.log("args[i](%o)", args[i]);
-                    teste = args[i]
+                    teste.push(args[i])
                     // grid.setSource(args[i]);
                 };
             }else{
                 grid.setSource(args);
             }
-            this.getType(teste)
-
-
+            // this.getType(teste)
+            // console.log('teste', '=', teste);
+            grid.setConfiguration(teste);
             // store =  Ext.create('Ext.data.Store', {
             //             fields: ['abbr', 'name'],
             //             data : [
@@ -161,7 +163,7 @@ Ext.define('QuickLook.view.main.MainController', {
             //                 {"abbr":"AZ", "name":"Arizona"}
             //             ]
             //         }),
-            
+
         }
 
         //     {
@@ -224,19 +226,19 @@ Ext.define('QuickLook.view.main.MainController', {
             //     display_name: 'Estado Civil',
             //     defaultValue: 2
             //     options: [
-            //         { 
+            //         {
             //             value: 1,
             //             display_name: 'Solteiro'
-            //         },    
-            //         { 
+            //         },
+            //         {
             //             value: 2,
             //             display_name: 'Casado'
-            //         },                    
-            //         { 
+            //         },
+            //         {
             //             value: 3,
             //             display_name: 'Separado'
             //         },
-            //         { 
+            //         {
             //             value: 'nomeinternodovalor',
             //             display_name: 'Display na da Opcao'
             //         }
@@ -248,24 +250,24 @@ Ext.define('QuickLook.view.main.MainController', {
             //     name: 'nomedoparamtro_seriesfavoritas',
             //     display_name: 'Series Favoritas',
             //     options: [
-            //         { 
+            //         {
             //             value: 1,
             //             display_name: 'Serie 1'
-            //         },    
-            //         { 
+            //         },
+            //         {
             //             value: 2,
             //             display_name: 'Serie 2'
-            //         },                    
-            //         { 
+            //         },
+            //         {
             //             value: 3,
             //             display_name: 'Serie 3'
             //         }
             //     ]
             //     // opcionais
-            // },  
+            // },
 
             //         //     {
-        
+
 
 
 });
