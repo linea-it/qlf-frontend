@@ -2,6 +2,11 @@
 
 ## Requirements for development
 
+Install the sencha cmd:
+
+https://www.sencha.com/products/extjs/cmd-download/
+
+
 ## Building the application
 
 Clone this repo:
