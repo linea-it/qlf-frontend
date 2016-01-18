@@ -16,7 +16,7 @@ git clone https://github.com/linea-it/qlf-frontend
 and build the app:
 
 ``` 
-cd qlf-frontend
+cd qlf-frontend/quicklook
 sencha app build
 ```
 
