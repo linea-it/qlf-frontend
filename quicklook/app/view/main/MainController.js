@@ -26,7 +26,7 @@ Ext.define('QuickLook.view.main.MainController', {
             grid = refs.accordion
             me = this           
             Ext.Ajax.request({
-                url: "/qlf-frontend/test.json",               
+                url: "/pipelines/ql.json",               
                 success: function(response) {
                     var obj = Ext.decode(response.responseText);
                     // console.log(obj)
