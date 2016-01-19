@@ -90,7 +90,57 @@ Ext.define('QuickLook.view.main.Configuration', {
                 store: store,                
                 valueField: 'name',
                 displayField: 'name',
-                editable: false                
+                editable: false,
+                // multiSelect: true,                
+            });
+
+            // Adicionar o parametro no sourceConfig
+            sourceConfig[name] = {
+                displayName: field.displayName,
+                editor: editor
+            }          
+            
+
+            // ------------------ SOURCE ----------------------
+            
+            if (field.hasOwnProperty('default')) {                
+                v = store.getAt(store.find('value', field.default));
+                source[name] = v.get('name');
+            }
+            else {
+                // a se pensar se e necessario
+                source[name] = '';
+            }
+
+        }
+        else {
+            // erro select tem que ter opcoes
+        }
+
+    },
+    
+    createMultiselect: function (field) {
+        // console.log('createselect(%o)', field);
+
+        var me = this,
+            sourceConfig = me.getMySourceConfig(),
+            source = me.getSource(),
+            name = field.name,
+            options = Array();
+
+        if (field.hasOwnProperty('options')) {            
+            var store = Ext.create('Ext.data.Store', {
+                fields: ['value', 'displayName'],
+                data: field['options']
+            })
+
+            // criar editor
+            var editor = Ext.create('Ext.form.ComboBox', {
+                store: store,                
+                valueField: 'name',
+                displayField: 'name',
+                editable: false,
+                multiSelect: true,                
             });
 
             // Adicionar o parametro no sourceConfig
