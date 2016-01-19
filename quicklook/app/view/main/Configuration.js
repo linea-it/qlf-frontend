@@ -11,12 +11,27 @@ Ext.define('QuickLook.view.main.Configuration', {
 
 
     scrollable: true,
-
+    myStore: '',
     config: {
         mySourceConfig: {},
-        mySource: {}
-    },    
-    setConfiguration: function (fields) {        
+        mySource: {},
+        
+    },
+    saveStore: function(){
+       Ext.Ajax.request({
+            url: "/qlf-frontend/pipelines/ql.json",
+            success: function(response) {
+                var obj = Ext.decode(response.responseText);
+            
+                console.log(obj)
+            }
+        });
+       console.log('fora', '=', obj)
+    },
+
+    
+    setConfiguration: function (fields) {
+        
         this.store.source = {}
         var me = this,
             sourceConfig = me.getMySourceConfig(),

@@ -47,8 +47,11 @@ Ext.define('QuickLook.view.main.MainController', {
                                 "title": obj['tasks'][i].name,
                                 items: [{
                                     xtype: 'fieldcontainer',
-                                    layout: 'hbox',
-                                    items:[]
+                                    // layout: 'hbox',
+                                    items:[
+                                        
+                                    
+                                    ]
                                     }
                                 ]
                             }
@@ -56,7 +59,7 @@ Ext.define('QuickLook.view.main.MainController', {
                         for (var s = 0; s < obj['tasks'][i].steps.length; s++) {
                             lista[lista.length - 1].items[0].items.push(
                                 {
-                                    xtype     : 'checkboxfield',
+                                    xtype     : 'checkboxfield',                                    
                                     boxLabel  : obj['tasks'][i].steps[s].name,
                                     name      : 'teste',
                                     // id        : obj[chave][info][result][step].name,
@@ -72,7 +75,7 @@ Ext.define('QuickLook.view.main.MainController', {
                                         xtype: 'button',
                                         iconCls: 'x-fa fa-cog',
                                         tooltip: 'Configuration',
-                                        margin: '8 10 0 10',
+                                        margin: '-28 10 0 200',
                                         padding : '0 0 1 0',
                                         value : {"args": obj['tasks'][i].steps[s].configuration, "StepName" : obj['tasks'][i].name +'('+ obj['tasks'][i].steps[s].name +')'},//obj[chave][info].StepName + '(' + obj[chave][info][result][step].Name + ')'},
                                         handler: function() {

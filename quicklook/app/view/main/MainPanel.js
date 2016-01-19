@@ -41,8 +41,30 @@ Ext.define('QuickLook.view.main.MainPanel', {
         reference: 'panelgrid',
         items: [{        
             xtype: 'config',
-            reference: 'configuration'
+            reference: 'configuration',
+            me: this,
 
+        },{
+            xtype: 'button',
+            text: 'Save',
+            margin: '20 10 0 0',
+            handler: function() {
+                // alert('You clicked the button!');
+                console.log(me)
+                panel = me.getView()
+                refs = panel.getReferences()
+                grid = refs.configuration
+                grid.saveStore()
+
+            }
+        },{
+            xtype: 'button',
+            text: 'submit',
+            margin: '20 10 0 0',
+            handler: function() {
+                alert('You clicked the button!');
+
+            }
         }],
         title: ' &nbsp',
         frame: true,
