@@ -12,7 +12,7 @@ Ext.define('QuickLook.view.main.List', {
     ],
     
     layout: 'accordion',
-    frame: true,
+    // frame: true,
     
     defaults: {
         bodyPadding: 10,

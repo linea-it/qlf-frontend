@@ -30,18 +30,12 @@ Ext.define('QuickLook.view.main.MainPanel', {
     },
     items: [{
         flex: 1,
-        xtype: 'list',
-        margin: '0 10 0 0',
-        title: ' &nbsp',
-        reference: 'accordion'
-
-    },{
-        flex: 1,
         xtype: 'panel',
-        reference: 'panelgrid',
+        reference: 'accordion',
+        margin: '0 10 0 0',
         items: [{        
-            xtype: 'config',
-            reference: 'configuration',
+            xtype: 'list',
+            reference: 'accordion',
             me: this,
 
         },{
@@ -69,9 +63,24 @@ Ext.define('QuickLook.view.main.MainPanel', {
         title: ' &nbsp',
         frame: true,
 
+    },{
+        flex: 1,
+        xtype: 'panel',
+        reference: 'panelgrid',
+        items: [{        
+            xtype: 'config',
+            reference: 'configuration',
+            me: this,
+
+        }],
+        title: ' &nbsp',
+        frame: true,
+
     }],
     // listeners: {
     //     afterrender: 'render'
     // }
     
 });
+
+
