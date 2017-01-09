@@ -5,18 +5,18 @@
  *
  * TODO - Replace this content of this view to suite the needs of your application.
  */
-Ext.define('QuickLook.view.main.Main', {
+Ext.define('Quicklook.view.main.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'app-main',
 
     requires: [
         'Ext.plugin.Viewport',
         'Ext.window.MessageBox',
-        'QuickLook.view.main.MainPanel',
-        'QuickLook.view.main.MainController',
-        'QuickLook.view.main.MainModel',
-        'QuickLook.view.main.List',
-        'QuickLook.view.main.Configuration'
+        'Quicklook.view.main.MainPanel',
+        'Quicklook.view.main.MainController',
+        'Quicklook.view.main.MainModel',
+        'Quicklook.view.main.List',
+        'Quicklook.view.main.Configuration'
     ],
 
     controller: 'main',
@@ -95,7 +95,7 @@ Ext.define('QuickLook.view.main.Main', {
             flex: 1,     
             xtype: 'mainlist',
             // title: ' &nbsp',
-            margin: '0 10 0 0',
+            margin: '0 10 0 0'
         }]
     }, {
         title: 'Monitor',

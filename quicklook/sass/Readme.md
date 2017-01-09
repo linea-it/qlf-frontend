@@ -15,19 +15,19 @@ This folder contains misc. support code for Sass builds (global functions, etc.)
 
 This folder contains Sass files defining CSS rules corresponding to classes
 included in the application's JavaScript code build. By default, files in this 
-folder are mapped to the application's root namespace, 'QuickLook'. This is set in
+folder are mapped to the application's root namespace, 'Quicklook'. This is set in
 `"app.json"`:
 
     "sass": {
-        "namespace": "QuickLook"
+        "namespace": "Quicklook"
     }
 
 ### ./sass/var
 
 This folder contains Sass files defining Sass variables corresponding to classes
 included in the application's JavaScript code build. By default, files in this 
-folder are mapped to the application's root namespace, 'QuickLook' in the same way
-as `"QuickLook/sass/src"`.
+folder are mapped to the application's root namespace, 'Quicklook' in the same way
+as `"Quicklook/sass/src"`.
 
 ## Slicing
 

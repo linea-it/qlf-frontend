@@ -1,21 +1,21 @@
 /**
  * This view is an example list of people.
  */
-Ext.define('QuickLook.view.main.List', {
+Ext.define('Quicklook.view.main.List', {
     extend: 'Ext.panel.Panel',
     xtype: 'list',
 
-    requires: [
-        'QuickLook.store.Personnel',
+    // requires: [
+    //     'QuickLook.store.Personnel',
     
 
-    ],
+    // ],
     
     layout: 'accordion',
     // frame: true,
     
     defaults: {
-        bodyPadding: 10,
+        bodyPadding: 10
     },   
 
     items: [],

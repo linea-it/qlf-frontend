@@ -3,10 +3,10 @@
  * calls Ext.application(). This is the ideal place to handle application launch and
  * initialization details.
  */
-Ext.define('QuickLook.Application', {
+Ext.define('Quicklook.Application', {
     extend: 'Ext.app.Application',
     
-    name: 'QuickLook',
+    name: 'Quicklook',
 
     stores: [
         // TODO: add global / shared stores here

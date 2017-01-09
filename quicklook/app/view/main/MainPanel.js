@@ -1,15 +1,15 @@
 /**
  * This view is an example list of people.
  */
-Ext.define('QuickLook.view.main.MainPanel', {
+Ext.define('Quicklook.view.main.MainPanel', {
     extend: 'Ext.panel.Panel',
     xtype: 'mainlist',
 
     requires: [
-        'QuickLook.store.Personnel',
-        'QuickLook.view.main.MainController',
-        'QuickLook.view.main.List',
-        'QuickLook.view.main.Configuration'
+        // 'QuickLook.store.Personnel',
+        'Quicklook.view.main.MainController',
+        'Quicklook.view.main.List',
+        'Quicklook.view.main.Configuration'
 
     ],
     controller: 'main', 
@@ -18,14 +18,14 @@ Ext.define('QuickLook.view.main.MainPanel', {
     // frame: true,
     
     defaults: {
-        bodyPadding: 10,
+        bodyPadding: 10
     },
     listeners: {
         afterrender: 'teste'
     },  
     layout: {
         type: 'hbox',
-        pack: 'start',
+        pack: 'start'
         // align: 'stretch'
     },
     items: [{
@@ -36,7 +36,7 @@ Ext.define('QuickLook.view.main.MainPanel', {
         items: [{        
             xtype: 'list',
             reference: 'accordion',
-            me: this,
+            me: this
 
         },{
             xtype: 'button',
@@ -61,7 +61,7 @@ Ext.define('QuickLook.view.main.MainPanel', {
             }
         }],
         title: ' &nbsp',
-        frame: true,
+        frame: true
 
     },{
         flex: 1,
@@ -70,13 +70,13 @@ Ext.define('QuickLook.view.main.MainPanel', {
         items: [{        
             xtype: 'config',
             reference: 'configuration',
-            me: this,
+            me: this
 
         }],
         title: ' &nbsp',
-        frame: true,
+        frame: true
 
-    }],
+    }]
     // listeners: {
     //     afterrender: 'render'
     // }

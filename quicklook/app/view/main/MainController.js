@@ -4,7 +4,7 @@
  *
  * TODO - Replace this content of this view to suite the needs of your application.
  */
-Ext.define('QuickLook.view.main.MainController', {
+Ext.define('Quicklook.view.main.MainController', {
     extend: 'Ext.app.ViewController',
 
     alias: 'controller.main',
@@ -26,7 +26,7 @@ Ext.define('QuickLook.view.main.MainController', {
             grid = refs.accordion
             me = this
             Ext.Ajax.request({
-                url: "/qlf-frontend/pipelines/ql.json",
+                url: "/pipelines/ql.json",
                 success: function(response) {
                     var obj = Ext.decode(response.responseText);
                     // console.log(obj)
@@ -64,7 +64,7 @@ Ext.define('QuickLook.view.main.MainController', {
                                     name      : 'teste',
                                     // id        : obj[chave][info][result][step].name,
                                     checked   : true,
-                                    margin: '0 0 0 10',
+                                    margin: '0 0 0 10'
                                 }
                             )
                             configuration = obj['tasks'][i].steps[s].configuration
@@ -106,7 +106,7 @@ Ext.define('QuickLook.view.main.MainController', {
                 })
                 name = options[0]['name']
                 grid.setSource({
-                abbr: options[0]['name'],
+                abbr: options[0]['name']
                 },{
                     abbr: {
                         displayName: 'Choose State',

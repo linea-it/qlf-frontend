@@ -1,12 +1,12 @@
 /**
  * This view is an example list of people.
  */
-Ext.define('QuickLook.view.main.Configuration', {
+Ext.define('Quicklook.view.main.Configuration', {
     extend: 'Ext.grid.property.Grid',
     xtype: 'config',
 
     requires: [
-        // 'QuickLook.store.Personnel'
+        'Quicklook.store.Personnel'
     ],
 
 
@@ -14,12 +14,12 @@ Ext.define('QuickLook.view.main.Configuration', {
     myStore: '',
     config: {
         mySourceConfig: {},
-        mySource: {},
+        mySource: {}
         
     },
     saveStore: function(){
        Ext.Ajax.request({
-            url: "/qlf-frontend/pipelines/ql.json",
+            url: "/pipelines/ql.json",
             success: function(response) {
                 var obj = Ext.decode(response.responseText);
             
@@ -105,7 +105,7 @@ Ext.define('QuickLook.view.main.Configuration', {
                 store: store,                
                 valueField: 'name',
                 displayField: 'name',
-                editable: false,
+                editable: false
                 // multiSelect: true,                
             });
 
@@ -155,7 +155,7 @@ Ext.define('QuickLook.view.main.Configuration', {
                 valueField: 'name',
                 displayField: 'name',
                 editable: false,
-                multiSelect: true,                
+                multiSelect: true           
             });
 
             // Adicionar o parametro no sourceConfig
@@ -246,5 +246,5 @@ Ext.define('QuickLook.view.main.Configuration', {
         if (field.hasOwnProperty('default')) {
             source[name] = field.default;
         }
-    },
+    }
 });
