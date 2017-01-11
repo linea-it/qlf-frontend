@@ -81,6 +81,12 @@ Ext.define('Quicklook.view.main.Main', {
     // },
     
     items: [{
+        title: 'Home',
+        iconCls: 'x-fa fa fa-home',
+        bind: {
+            html: '{loremIpsum}'
+        }
+    },{
         title: 'Configuration',
         iconCls: 'fa-cog',
         width: 500,
@@ -99,7 +105,7 @@ Ext.define('Quicklook.view.main.Main', {
         }]
     }, {
         title: 'Monitor',
-        iconCls: 'x-fa fa-line-chart',
+        iconCls: 'x-fa fa-desktop',
         bind: {
             html: '{loremIpsum}'
         }
