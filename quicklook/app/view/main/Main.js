@@ -83,8 +83,10 @@ Ext.define('Quicklook.view.main.Main', {
     items: [{
         title: 'Home',
         iconCls: 'x-fa fa fa-home',
-        bind: {
-            html: '{loremIpsum}'
+        xtype: 'component',
+        id: 'bokeh',
+        listeners: {
+            afterrender: 'teste'
         }
     },{
         title: 'Configuration',

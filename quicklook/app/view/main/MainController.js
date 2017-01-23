@@ -19,6 +19,14 @@ Ext.define('Quicklook.view.main.MainController', {
         }
     },
 
+    teste: function (a,b,c) {
+        var imported = document.createElement('script');
+        imported.src = 'http://localhost:5006/metrics/autoload.js?bokeh-autoload-element=2487a749-7bf2-400d-883a-5edf7905b341';
+        imported.id = "2487a749-7bf2-400d-883a-5edf7905b341";
+        document.getElementById('bokeh').appendChild(imported)
+    },
+
+
     render: function (accordionPanel) {
             // exapmple json response
             panel = this.getView()
@@ -124,18 +132,18 @@ Ext.define('Quicklook.view.main.MainController', {
                     grid.setSource(teste)
                 }
         },
-        teste: function() {
-            // console.log("onSelectReleaseField(%o, %o. %o)", release, field, combo);
+        // teste: function() {
+        //     // console.log("onSelectReleaseField(%o, %o. %o)", release, field, combo);
 
-            var refs = this.getReferences();
-                // conf = refs.Configuration;
-                // storeDI = gridDI.getStore();
-            teste = this.getView()
-            console.log(refs)
-            // teste = this.getStore('personnel')
-            // console.log(teste)
+        //     var refs = this.getReferences();
+        //         // conf = refs.Configuration;
+        //         // storeDI = gridDI.getStore();
+        //     teste = this.getView()
+        //     console.log(refs)
+        //     // teste = this.getStore('personnel')
+        //     // console.log(teste)
 
-        },
+        // },
         setConfiguration: function(args, StepName) {
             panel = this.getView()
             refs = panel.getReferences()
