@@ -19,7 +19,7 @@ sencha app build production
 ```
 sudo vim /etc/apache2/apache2.conf
 ```
-alterar a linha "<Directory /var/www/html/>" para o diretorio onde fez o clone
+alterar a linha '<Directory /var/www/html/>' para o diretorio onde fez o clone
 
 ```
 sudo service apache2 restart
