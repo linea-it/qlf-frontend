@@ -1,4 +1,4 @@
-// @tag class
+// @tag class 
 /**
  * This class provides dynamic loading support for JavaScript classes. Application code
  * does not typically need to call `Ext.Loader` except perhaps to configure path mappings
