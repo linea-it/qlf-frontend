@@ -32,12 +32,13 @@ Alterar a linha:
 
    <Directory /var/www/>
 Para Fica assim:
-
+```
    <Directory /diretorio_onde_foi_feito_o_clone/>
          Options Indexes FollowSymLinks
          AllowOverride All
          Require all granted
    </Directory>
+```
 Arquivo 2:
 ```
    $ sudo vim /etc/apache2/sites-available/000-default.conf
@@ -47,11 +48,13 @@ Arquivo 2:
    $ sudo vim /etc/apache2/sites-available/default.conf
 ```
 Alterar a linha:
-
+```
     DocumentRoot /var/www
+```
 para
-
+```
     DocumentRoot /diretorio_onde_foi_feito_o_clone/
+```
 Não esqueça de reiniciar o apache depois:
 ```
     $ sudo service apache2 restart
