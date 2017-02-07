@@ -908,6 +908,8 @@ $include-ext-window-toast: dynamic(true);;
 $include-ext-window-window: dynamic(true);;
 $include-quicklook-application: dynamic(true);;
 $include-quicklook-store-personnel: dynamic(true);;
+$include-quicklook-view-main-apps: dynamic(true);;
+$include-quicklook-view-main-ccd: dynamic(true);;
 $include-quicklook-view-main-configuration: dynamic(true);;
 $include-quicklook-view-main-list: dynamic(true);;
 $include-quicklook-view-main-main: dynamic(true);;

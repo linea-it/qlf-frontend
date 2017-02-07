@@ -16,7 +16,9 @@ Ext.define('Quicklook.view.main.Main', {
         'Quicklook.view.main.MainController',
         'Quicklook.view.main.MainModel',
         'Quicklook.view.main.List',
-        'Quicklook.view.main.Configuration'
+        'Quicklook.view.main.Configuration',
+        'Quicklook.view.main.Apps',
+        'Quicklook.view.main.Ccd'
     ],
 
     controller: 'main',
@@ -116,9 +118,13 @@ Ext.define('Quicklook.view.main.Main', {
         title: 'QA',
         // iconCls: 'fa-users',
         iconCls: 'x-fa fa-line-chart',
-        bind: {
-            html: '{loremIpsum}'
-        }
+        xtype: 'apps'
+    },
+    {
+        title: 'Teste',
+        // iconCls: 'fa-users',
+        iconCls: 'x-fa fa-line-chart',
+        xtype: 'ccd'
     }
     // , {
     //     title: 'Settings',
